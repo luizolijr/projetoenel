@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Formacao{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+        <div class="page-subheading page-subheading-md">
+            <ol class="breadcrumb">
+                <li class="active"><a href="javascript:;">Editar Formação</a></li>
+            </ol>
+        </div>
+
+        <div class="container-fluid-md">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Formulário</h4>                    
+                            
+                        </div>
+                        <div class="panel-body">
+                            {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.grau_formacao, "Grau de Formacao", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.grau_formacao) }}
+                                        {{ form_widget(form.grau_formacao, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.curso, "Curso", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.curso) }}
+                                        {{ form_widget(form.curso, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.instituicao, "Instituicao", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.instituicao) }}
+                                        {{ form_widget(form.instituicao, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.situacao, "Situacao", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.situacao) }}
+                                        {{ form_widget(form.situacao, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.data_conclusao, "Data de Conclusao", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.data_conclusao) }}
+                                        {{ form_widget(form.data_conclusao, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.candidato, "Candidato", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.candidato) }}
+                                        {{ form_widget(form.candidato, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">                            
+                                    {{ include('formacao/_form.html.twig', {'button_label': 'Salvar'}) }}
+                                
+                                    <a class="btn btn-inverse" href="{{ path('formacao_index') }}">Voltar</a>
+                                
+                                    <a class="btn btn-danger" onclick="deletar();">Deletar</a>
+                                </div>
+                            </div>
+                            {{ form_end(form) }}
+
+                            {{ include('formacao/_delete_form.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %} 
+    {{ parent() }}
+    <script>
+        function deletar() {
+            $("#deleteSubmit").click();
+        }
+    </script>
+{% endblock %}

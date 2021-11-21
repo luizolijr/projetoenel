@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidato{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Candidato</a>
+                    </li>
+                </ol>
+            </div>
+
+        <div class="container-fluid-md">
+            <a class="btn btn-inverse" href="{{ path('candidato_index') }}">Voltar</a>            
+
+            <a class=" btn btn-primary" href="{{ path('candidato_edit', {'id': candidato.id}) }}">Editar</a>
+            <br></br>
+
+            {{ include('candidato/_delete_form.html.twig') }}
+
+        
+        
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ candidato.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ candidato.nome }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ candidato.email }}</td>
+            </tr>
+            <tr>
+                <th>Cpf</th>
+                <td>{{ candidato.cpf }}</td>
+            </tr>
+            <tr>
+                <th>Primeiro_emprego</th>
+                <td>{{ candidato.primeiroEmprego ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Data_nascimento</th>
+                <td>{{ candidato.dataNascimento ? candidato.dataNascimento|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Estado_civil</th>
+                <td>{{ candidato.estadoCivil }}</td>
+            </tr>
+            <tr>
+                <th>Sexo</th>
+                <td>{{ candidato.sexo }}</td>
+            </tr>
+            <tr>
+                <th>Numero_filhos</th>
+                <td>{{ candidato.numeroFilhos }}</td>
+            </tr>
+            <tr>
+                <th>Possui_decifiencia</th>
+                <td>{{ candidato.possuiDecifiencia ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Carteira_habilitacao</th>
+                <td>{{ candidato.carteiraHabilitacao ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Nacionalidade</th>
+                <td>{{ candidato.nacionalidade }}</td>
+            </tr>
+            <tr>
+                <th>Naturalidade</th>
+                <td>{{ candidato.naturalidade }}</td>
+            </tr>
+            <tr>
+                <th>Foto</th>
+                <td>{{ candidato.foto }}</td>
+            </tr>
+            <tr>
+                <th>Cep</th>
+                <td>{{ candidato.cep }}</td>
+            </tr>
+            <tr>
+                <th>Logradouro</th>
+                <td>{{ candidato.logradouro }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ candidato.numero }}</td>
+            </tr>
+            <tr>
+                <th>Complemento</th>
+                <td>{{ candidato.complemento }}</td>
+            </tr>
+            <tr>
+                <th>Bairro</th>
+                <td>{{ candidato.bairro }}</td>
+            </tr>
+            <tr>
+                <th>Cidade</th>
+                <td>{{ candidato.cidade }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ candidato.estado }}</td>
+            </tr>
+            <tr>
+                <th>Telefone1</th>
+                <td>{{ candidato.telefone1 }}</td>
+            </tr>
+            <tr>
+                <th>Falarcom1</th>
+                <td>{{ candidato.falarcom1 }}</td>
+            </tr>
+            <tr>
+                <th>Telefone2</th>
+                <td>{{ candidato.telefone2 }}</td>
+            </tr>
+            <tr>
+                <th>Falarcom2</th>
+                <td>{{ candidato.falarcom2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    
+
+    
+    </div>
+{% endblock %}

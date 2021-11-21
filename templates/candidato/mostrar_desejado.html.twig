@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CargoDesejado{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Área</a>
+                    </li>
+                </ol>
+            </div>
+
+        <div class="container-fluid-md">
+            <a class="btn btn-inverse" href="{{ path('candidato_edit', {'id': candidato.id}) }}">Voltar</a>            
+
+            <a class="btn btn-primary" href="{{ path('candidato_editar_desejado', {'desejado': desejado.id, 'candidato' : candidato.id}) }}">Editar</a>
+        </div>           
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ desejado.id }}</td>
+                </tr>
+                <tr>
+                    <th>Cargo</th>
+                    <td>{{ desejado.cargo }}</td>
+                </tr>
+                <tr>
+                    <th>Pretencao_salarial</th>
+                    <td>{{ desejado.pretencaoSalarial }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

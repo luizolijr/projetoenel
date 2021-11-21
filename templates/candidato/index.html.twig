@@ -1,0 +1,189 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidato index{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+        <div class="page-subheading page-subheading-md">
+            <ol class="breadcrumb">
+                <li class="active">
+                    <a href="javascript:;">Listagem de Candidatos</a>
+                </li>
+            </ol>
+        </div>
+
+        <div class="container-fluid-md">
+            <a class="btn btn-primary" href="{{ path('candidato_new') }}">Cadastrar</a>
+            <a class="btn btn-success" href="#" onclick="relatorio(event);">Imprimir listagem</a>
+            <br></br>
+        </div>
+
+        <div class="container-fluid-md">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Filtro</h4>            
+                </div>
+                <div class="panel-body">
+                    {{ form_start(filter) }}                
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-8">
+                                {{ form_label(filter.nome, "Nome", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(filter.nome) }}
+                                {{ form_widget(filter.nome, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                            <div class="col-sm-10 col-md-4 col-sm-1" style="display: none">
+                                {{ form_label(filter.pagina, "Pagina", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(filter.pagina) }}
+                                {{ form_widget(filter.pagina, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                {{ form_label(filter.ativo, "Ativo", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(filter.ativo) }}
+                                {{ form_widget(filter.ativo, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                            <div class="col-sm-1 col-md-1 col-lg-1">
+                                <button class="btn btn-primary" onclick="filtrar(event)" style="margin-top: 23px;" >Filtrar</button>
+                            </div>
+                            <div class="col-sm-1 col-md-1 col-lg-1" style="display: none">
+                                <button id="submitFiltro" class="btn btn-primary" type="submit" style="margin-top: 23px;" >Filtrar</button>
+                            </div>
+                        </div>
+                    {{ form_end(filter) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid-md">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Candidatos</h4>
+                    <div class="panel-options">
+                        <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                        <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="9%">Id</th>
+                                <th width="9%">Nome</th>
+                                <th width="9%">Email</th>
+                                <th width="9%">Cpf</th>
+                                <th width="9%">Telefone</th>
+                                <th width="9%">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for candidato in candidatos %}
+                                <tr>
+                                    <td>{{ candidato.id }}</td>
+                                    <td>{{ candidato.nome }}</td>
+                                    <td>{{ candidato.email }}</td>
+                                    <td>{{ candidato.cpf }}</td>
+                                    <td>{{ candidato.telefone1 }}</td>
+                                    <td>
+                                        <a class=" btn btn-success" href="{{ path('candidato_show', {'id': candidato.id}) }}">Mostrar</a>
+                                        <a class="btn btn-inverse" href="{{ path('candidato_edit', {'id': candidato.id}) }}">Editar</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">Sem registros encontrados</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>    
+
+        {% if totalPaginas > 1 %}
+            <div class="container-fluid-md">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <nav>
+                                        <ul class="pagination justify-content-center">
+                                            {% if totalPaginas <= 10 %}
+                                                {% for i in range(1,  totalPaginas ) %}
+                                                    <li class="pagina-item {% if pagina == i %} active {% endif %}"><a class="pagina-link" id="paginador" href="#" onclick="paginar(event, {{ i }})">{{ i }}</a></li>
+                                                {% endfor %}
+                                            {% else %}
+                                                {% if pagina <= 10 %}
+                                                    {% for i in range(1,  10 ) %}
+                                                        <li class="pagina-item {% if pagina == i %} active {% endif %}"><a class="pagina-link" id="paginador" href="#" onclick="paginar(event, {{ i }})">{{ i }}</a></li>
+                                                    {% endfor %}
+                                                    <li class="pagina-item"><a class="pagina-link" id="paginador" href="#" onclick="paginar(event, 11)"> > </a></li>
+                                                {% else %}
+
+                                                    {% set voltar = ( ( (pagina // 10) - 1 ) * 10 ) + 1 %}
+                                                    <li class="pagina-item"><a class="pagina-link" id="paginador" href="#" onclick="paginar(event, {{ voltar }})"> < </a></li>
+
+                                                    {% set inicio = voltar + 10 %}
+                                                    {% set fim = voltar + 19 %}
+
+                                                    {% set acabou = false %}
+                                                    {% for i in range(inicio, fim) %}
+                                                        {% if i <= totalPaginas %}
+                                                            <li class="pagina-item {% if pagina == i %} active {% endif %}"><a class="pagina-link" id="paginador" href="#" onclick="paginar(event, {{ i }})">{{ i }}</a></li>
+                                                        {% else %}
+                                                            {% set acabou = true %}
+                                                        {% endif %}
+                                                    {% endfor %}
+
+                                                    {% if acabou == false %}
+                                                        {% set adiantar = ( ( (pagina // 10) + 1 ) * 10 ) + 1 %}
+                                                        <li class="pagina-item"><a class="pagina-link" id="paginador" href="#" onclick="paginar(event, {{ adiantar }})"> > </a></li>
+                                                    {% endif %}
+
+                                                {% endif %}
+                                            {% endif %}
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="container-fluid-md mb-5" style="display: none">
+            <div class="panel panel-default">
+                {{ form_start(report_form, { 'attr': { 'action': path('candidato_report') } }) }}
+                    {{ form_label(report_form.message,"HTML", { 'attr': { 'class':'form-control' } }) }}
+                    {{ form_errors(report_form.message)}}
+                    {{ form_widget(report_form.message, { 'attr': { 'class':'form-control' } }) }}
+                    <button id="botaorelatorio" class="btn btn-success" type="submit">Imprimir</button>
+                {{ form_end(report_form) }}
+            </div>
+        </div>
+
+        <div class="container-fluid-md"><br><br></div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function relatorio(event) {
+            event.preventDefault();
+            $('#botaorelatorio').click();
+        }
+    </script>
+    <script>
+        function paginar(event, i) {
+            event.preventDefault();
+            document.getElementById("candidato_filter_pagina").value = i;
+            $('#submitFiltro').click();
+        }
+        function filtrar(event) {
+            event.preventDefault();
+            document.getElementById("candidato_filter_pagina").value = 1;
+            $('#submitFiltro').click();
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block menuusuarios %}class="active"{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active"><a href="javascript:;">Cadastro de Usuário</a></li>
+                </ol>
+            </div>
+
+
+<div class="container-fluid-md">            
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Formulário</h4>   
+                         
+                    
+                </div>
+                <div class="panel-body">
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{ form_label(form.email, "Email", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.email) }}
+                                {{ form_widget(form.email, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">                        
+                            <div class="form-group">
+                                {{ form_label(form.tipo, "Tipo", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.tipo) }}
+                                {{ form_widget(form.tipo, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{ form_label(form.empresa, "Empresa", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.empresa) }}
+                                {{ form_widget(form.empresa, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div> 
+                        </div> 
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{ form_label(form.candidato, "Candidato", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.candidato) }}
+                                {{ form_widget(form.candidato, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>                      
+                        </div>                      
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-3">                        
+                            <div class="form-group">                            
+                                {{ form_label(form.password.first, "Senha", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.password.first) }}
+                                {{ form_widget(form.password.first, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{ form_label(form.password.second, "Repita a Senha", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.password.second) }}
+                                {{ form_widget(form.password.second, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <button class="btn btn-primary" type="submit">Enviar</button>
+    <a class="btn btn-inverse" href="{{ path('user_index') }}">Voltar</a>
+    {{ form_end(form) }}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Software{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+        <div class="page-subheading page-subheading-md">
+            <ol class="breadcrumb">
+                <li class="active">
+                    <a href="javascript:;">Área</a>
+                </li>
+            </ol>
+        </div>
+        <div class="container-fluid-md">
+            <a class="btn btn-inverse" href="{{ path('candidato_edit', {'id': candidato.id}) }}">Voltar</a>          
+
+            <a class="btn btn-primary" href="{{ path('candidato_editar_software', {'software': software.id, 'candidato' : candidato.id}) }}">Editar</a>
+        </div>          
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ software.id }}</td>
+                </tr>
+                <tr>
+                    <th>Descricao</th>
+                    <td>{{ software.descricao }}</td>
+                </tr>
+                <tr>
+                    <th>Nivel</th>
+                    <td>{{ software.nivel }}</td>
+                </tr>
+            </tbody>
+        </table>    
+    </div>
+
+{% endblock %}

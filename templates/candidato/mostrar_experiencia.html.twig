@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Experiencia{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Área</a>
+                    </li>
+                </ol>
+            </div>
+
+        <div class="container-fluid-md">
+            <a class="btn btn-inverse" href="{{ path('candidato_edit', {'id': candidato.id}) }}">Voltar</a>            
+
+            <a class="btn btn-primary" href="{{ path('candidato_editar_experiencia', {'experiencia': experiencia.id, 'candidato' : candidato.id}) }}">Editar</a>
+
+            
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ experiencia.id }}</td>
+                </tr>
+                <tr>
+                    <th>Empresa</th>
+                    <td>{{ experiencia.empresa }}</td>
+                </tr>
+                <tr>
+                    <th>Ultimo_cargo</th>
+                    <td>{{ experiencia.ultimoCargo }}</td>
+                </tr>
+                <tr>
+                    <th>Data_admissao</th>
+                    <td>{{ experiencia.dataAdmissao ? experiencia.dataAdmissao|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Data_demissao</th>
+                    <td>{{ experiencia.dataDemissao ? experiencia.dataDemissao|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Ultimo_salario</th>
+                    <td>{{ experiencia.ultimoSalario }}</td>
+                </tr>
+                <tr>
+                    <th>Atividade_exercida</th>
+                    <td>{{ experiencia.atividadeExercida }}</td>
+                </tr>
+            </tbody>
+        </table>    
+    </div>
+
+{% endblock %}

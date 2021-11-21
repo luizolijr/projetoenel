@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Formacao{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+        <div class="page-subheading page-subheading-md">
+            <ol class="breadcrumb">
+                <li class="active"><a href="javascript:;">Cadastro de Formação</a></li>
+            </ol>
+        </div>
+        <div class="container-fluid-md">            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Formulário</h4>
+                        </div>
+                        <div class="panel-body">
+                            {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.grau_formacao, "Grau de Formacao", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.grau_formacao) }}
+                                        {{ form_widget(form.grau_formacao, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.curso, "Curso", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.curso) }}
+                                        {{ form_widget(form.curso, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.instituicao, "Instituicao", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.instituicao) }}
+                                        {{ form_widget(form.instituicao, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.situacao, "Situacao", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.situacao) }}
+                                        {{ form_widget(form.situacao, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.data_conclusao, "Data de Conclusao", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.data_conclusao) }}
+                                        {{ form_widget(form.data_conclusao, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Enviar</button>
+    <a class="btn btn-inverse" href="{{ path('formacao_index') }}">Voltar</a>
+    {{ form_end(form) }}
+    </div>
+    
+{% endblock %}

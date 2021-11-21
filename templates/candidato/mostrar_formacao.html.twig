@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formacao{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Formação</a>
+                    </li>
+                </ol>
+            </div>
+
+        <div class="container-fluid-md">
+            <a class="btn btn-inverse" href="{{ path('candidato_edit', {'id': candidato.id}) }}">Voltar</a>            
+
+            <a class="btn btn-primary" href="{{ path('candidato_editar_formacao', {'formacao': formacao.id, 'candidato' : candidato.id}) }}">Editar</a>
+
+            
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formacao.id }}</td>
+            </tr>
+            <tr>
+                <th>Grau de Formacão</th>
+                <td>{{ formacao.grauFormacao }}</td>
+            </tr>
+            <tr>
+                <th>Curso</th>
+                <td>{{ formacao.curso }}</td>
+            </tr>
+            <tr>
+                <th>Instituição</th>
+                <td>{{ formacao.instituicao }}</td>
+            </tr>
+            <tr>
+                <th>Situacao</th>
+                <td>{{ formacao.situacao }}</td>
+            </tr>
+            <tr>
+                <th>Data de Conclusão</th>
+                <td>{{ formacao.dataConclusao ? formacao.dataConclusao|date('d-m-y') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    </div>
+
+
+{% endblock %}

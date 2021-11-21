@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Cargo{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active"><a href="javascript:;">Cadastro de Áreas</a></li>
+                </ol>
+            </div>
+
+
+            <div class="container-fluid-md">
+            
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Formulário</h4>                    
+                    
+                </div>
+                <div class="panel-body">
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{ form_label(form.descricao, "Descrição", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.descricao) }}
+                                {{ form_widget(form.descricao, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{ form_label(form.area, "Área", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.area) }}
+                                {{ form_widget(form.area, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Enviar</button>
+    <a class="btn btn-inverse" href="{{ path('cargo_index') }}">Voltar</a>
+    {{ form_end(form) }}
+    </div>
+
+    
+{% endblock %}

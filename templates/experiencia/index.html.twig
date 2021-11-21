@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Experiencia index{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Experiência</a>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="container-fluid-md">
+            <a class="btn btn-primary" href="{{ path('experiencia_new') }}">Cadastrar Experiência</a>
+            <br></br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Experiência</h4>            
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="9%">Id</th>
+                        <th width="9%">Empresa</th>
+                        <th width="9%">Ultimo Cargo</th>
+                        <th width="9%">Atividade Exercida</th>
+                        <th width="9%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for experiencium in experiencias %}
+                    <tr>
+                        <td>{{ experiencium.id }}</td>
+                        <td>{{ experiencium.empresa }}</td>
+                        <td>{{ experiencium.ultimoCargo }}</td>
+                        <td>{{ experiencium.atividadeExercida }}</td>
+                        
+                        <td>
+                            <a class=" btn btn-success" href="{{ path('experiencia_show', {'id': experiencium.id}) }}">Mostrar</a>
+                            <a class="btn btn-inverse" href="{{ path('experiencia_edit', {'id': experiencium.id}) }}">Editar</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="26">Sem registros</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+    
+{% endblock %}

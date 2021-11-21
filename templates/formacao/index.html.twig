@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formacao index{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Formação</a>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="container-fluid-md">
+            <a class="btn btn-primary" href="{{ path('formacao_new') }}">Cadastrar</a>
+            <br></br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Formação</h4>            
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="9%">Id</th>
+                        <th width="9%">Curso</th>
+                        <th width="9%">Situacao</th>
+                        <th width="9%">Data de Conclusao</th>
+                        <th width="9%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for formacao in formacaos %}
+                    <tr>
+                        <td>{{ formacao.id }}</td>
+                        <td>{{ formacao.curso }}</td>
+                        <td>{{ formacao.situacao }}</td>
+                        <td>{{ formacao.dataConclusao ? formacao.dataConclusao|date('d-m-Y') : '' }}</td>
+                <td>
+                        
+                        <td>
+                            <a class=" btn btn-success" href="{{ path('formacao_show', {'id': formacao.id}) }}">Mostrar</a>
+                            <a class="btn btn-inverse" href="{{ path('formacao_edit', {'id': formacao.id}) }}">Editar</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="26">Sem registros</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock %}

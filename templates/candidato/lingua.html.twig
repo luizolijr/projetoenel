@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Lingua{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+        <div class="page-subheading page-subheading-md">
+            <ol class="breadcrumb">
+                <li class="active"><a href="javascript:;">Editar Língua</a></li>
+            </ol>
+        </div>
+
+        <div class="container-fluid-md">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Formulário</h4>
+                        </div>
+                        <div class="panel-body">
+                            {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.descricao, "Descrição", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.descricao) }}
+                                        {{ form_widget(form.descricao, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.nivel_fluencia, "Nível de Fluencia", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.nivel_fluencia) }}
+                                        {{ form_widget(form.nivel_fluencia, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">                            
+                                    {{ include('lingua/_form.html.twig', {'button_label': 'Salvar'}) }}
+                                
+                                    <a class="btn btn-inverse" href="{{ path('candidato_edit', { 'id': candidato.id } ) }}">Voltar</a>
+                            
+                                </div>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+{% endblock %}

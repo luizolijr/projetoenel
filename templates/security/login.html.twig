@@ -1,0 +1,105 @@
+<!doctype html>
+<html class="no-js">
+
+<!-- Mirrored from optimisticdesigns.herokuapp.com/veneto/pages-sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Dec 2019 21:13:58 GMT -->
+<head>
+        <!-- Meta, title, CSS, favicons, etc. -->
+                <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Login </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!--<link rel="shortcut icon" href="/favicon.ico">-->
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="dist/css/veneto-admin.min.css">
+        <link rel="stylesheet" href="demo/css/demo.css">
+        <link rel="stylesheet" href="dist/assets/font-awesome/css/font-awesome.css">
+
+
+        <!--[if lt IE 9]>
+        <script src="dist/assets/libs/html5shiv/html5shiv.min.js"></script>
+        <script src="dist/assets/libs/respond/respond.min.js"></script>
+        <![endif]-->
+
+    {% block stylesheets %}
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width" />
+        <!--<link rel="shortcut icon" href="/favicon.ico">-->
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="{{ asset('template-back/dist/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('template-back/dist/css/veneto-admin.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('template-back/css/demo.css') }}" />
+        <link rel="stylesheet" href="{{ asset('template-back/dist/assets/font-awesome/css/font-awesome.css') }}" />
+
+        <link rel="stylesheet" href="{{ asset('template-back/dist/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css') }}" />
+        <link rel="stylesheet" href="{{ asset('template-back/dist/css/plugins/rickshaw.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('template-back/dist/css/plugins/morris.min.css') }}" />
+
+        <!--[if lt IE 9]>
+            <script src="{{ asset('template-back/dist/assets/libs/html5shiv/html5shiv.min.js') }}"></script>
+            <script src="{{ asset('template-back/dist/assets/libs/respond/respond.min.js') }}"></script>
+        <![endif]-->
+    {% endblock %}
+
+    </head>
+    
+    <body class="body-sign-in">
+    <div class="container">
+        <div class="panel panel-default form-container">
+            <div class="panel-body">
+                {% if error %}
+                    <div align="center"><br>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <form method="post">
+                    <h3 class="text-center margin-xl-bottom">Bem-vindo!</h3>
+
+                    <div class="form-group text-center">
+                        <label class="sr-only" for="email">Email</label>
+                        <input name="email" type="email" class="form-control input-lg" id="email" placeholder="Email Address">
+                    </div>
+                    <div class="form-group text-center">
+                        <label class="sr-only" for="password">Senha</label>
+                        <input name="password" type="password" class="form-control input-lg" id="password" placeholder="Password">
+                    </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">ENTRAR</button>
+                    
+                </form>
+            </div>            
+        </div>
+    </div>
+    {% block javascripts %}
+        <script src="{{ asset('template-back/dist/assets/libs/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/bs3/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/jquery-navgoco/jquery.navgoco.js') }}"></script>
+        <script src="{{ asset('template-back/dist/js/main.js') }}"></script>
+
+        <!--[if lt IE 9]>
+            <script src="{{ asset('template-back/dist/assets/plugins/flot/excanvas.min.js') }}"></script>
+        <![endif]-->
+        <script src="{{ asset('template-back/dist/assets/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
+        <script src="{{ asset('template-back/js/demo.js') }}"></script>
+
+        <script src="{{ asset('template-back/dist/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/jquery-jvectormap/maps/world_mill_en.js') }}"></script>
+
+        <!--[if gte IE 9]>-->
+        <script src="{{ asset('template-back/dist/assets/plugins/rickshaw/js/vendor/d3.v3.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/rickshaw/rickshaw.min.js') }}"></script>
+        <!--<![endif]-->
+
+        <script src="{{ asset('template-back/dist/assets/plugins/flot/jquery.flot.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/flot/jquery.flot.resize.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/raphael/raphael-min.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/morris/morris.min.js') }}"></script>
+        <script src="{{ asset('template-back/js/dashboard.js') }}"></script>
+        {% endblock %}
+</body>
+
+<!-- Mirrored from optimisticdesigns.herokuapp.com/veneto/pages-sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Dec 2019 21:13:58 GMT -->
+</html>

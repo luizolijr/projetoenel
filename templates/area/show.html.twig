@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Area{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Área</a>
+                    </li>
+                </ol>
+            </div>
+
+        <div class="container-fluid-md">
+            <a class="btn btn-inverse" href="{{ path('area_index') }}">Voltar</a>            
+
+            <a class=" btn btn-primary" href="{{ path('area_edit', {'id': area.id}) }}">Editar</a>            
+            <br></br>
+            {{ include('area/_delete_form.html.twig') }}
+
+            
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ area.id }}</td>
+            </tr>
+            <tr>
+                <th>Descricao</th>
+                <td>{{ area.descricao }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    </div>
+
+   
+
+   
+{% endblock %}

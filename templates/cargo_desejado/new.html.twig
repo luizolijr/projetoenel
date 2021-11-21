@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CargoDesejado{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active"><a href="javascript:;">Cargo Desejado</a></li>
+                </ol>
+            </div>
+
+
+            <div class="container-fluid-md">
+            
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Formulário</h4>                    
+                    
+                </div>
+                <div class="panel-body">
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{ form_label(form.cargo, "Cargo", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.cargo) }}
+                                {{ form_widget(form.cargo, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{ form_label(form.pretencao_salarial, "Pretensão Salarial", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.pretencao_salarial) }}
+                                {{ form_widget(form.pretencao_salarial, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{ form_label(form.candidato, "Candidato", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.candidato) }}
+                                {{ form_widget(form.candidato, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Enviar</button>
+    <a class="btn btn-inverse" href="{{ path('cargo_desejado_index') }}">Voltar</a>
+    {{ form_end(form) }}
+    </div>
+
+    
+{% endblock %}

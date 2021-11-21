@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Empresa{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Empresa</a>
+                    </li>
+                </ol>
+            </div>
+
+        <div class="container-fluid-md">
+            <a class="btn btn-inverse" href="{{ path('empresa_index') }}">Voltar</a>            
+
+            <a class=" btn btn-primary" href="{{ path('empresa_edit', {'id': empresa.id}) }}">Editar</a>            
+            <br></br>
+            {{ include('empresa/_delete_form.html.twig') }}
+
+            
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ empresa.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome_fantasia</th>
+                <td>{{ empresa.nomeFantasia }}</td>
+            </tr>
+            <tr>
+                <th>Razao_social</th>
+                <td>{{ empresa.razaoSocial }}</td>
+            </tr>
+            <tr>
+                <th>Cnpj</th>
+                <td>{{ empresa.cnpj }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ empresa.email }}</td>
+            </tr>
+            <tr>
+                <th>Telefone1</th>
+                <td>{{ empresa.telefone1 }}</td>
+            </tr>
+            <tr>
+                <th>Telefone2</th>
+                <td>{{ empresa.telefone2 }}</td>
+            </tr>
+            <tr>
+                <th>Cep</th>
+                <td>{{ empresa.cep }}</td>
+            </tr>
+            <tr>
+                <th>Logradouro</th>
+                <td>{{ empresa.logradouro }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ empresa.numero }}</td>
+            </tr>
+            <tr>
+                <th>Complemento</th>
+                <td>{{ empresa.complemento }}</td>
+            </tr>
+            <tr>
+                <th>Bairro</th>
+                <td>{{ empresa.bairro }}</td>
+            </tr>
+            <tr>
+                <th>Cidade</th>
+                <td>{{ empresa.cidade }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ empresa.estado }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    </div>
+
+
+{% endblock %}

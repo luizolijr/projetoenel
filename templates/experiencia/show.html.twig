@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Experiencia{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Área</a>
+                    </li>
+                </ol>
+            </div>
+
+        <div class="container-fluid-md">
+            <a class="btn btn-inverse" href="{{ path('experiencia_index') }}">Voltar</a>            
+
+            <a class=" btn btn-primary" href="{{ path('experiencia_edit', {'id': experiencium.id}) }}">Editar</a>            
+            <br></br>
+            {{ include('experiencia/_delete_form.html.twig') }}
+
+            
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ experiencium.id }}</td>
+            </tr>
+            <tr>
+                <th>Empresa</th>
+                <td>{{ experiencium.empresa }}</td>
+            </tr>
+            <tr>
+                <th>Ultimo_cargo</th>
+                <td>{{ experiencium.ultimoCargo }}</td>
+            </tr>
+            <tr>
+                <th>Data_admissao</th>
+                <td>{{ experiencium.dataAdmissao ? experiencium.dataAdmissao|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Data_demissao</th>
+                <td>{{ experiencium.dataDemissao ? experiencium.dataDemissao|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Ultimo_salario</th>
+                <td>{{ experiencium.ultimoSalario }}</td>
+            </tr>
+            <tr>
+                <th>Atividade_exercida</th>
+                <td>{{ experiencium.atividadeExercida }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    </div>
+
+{% endblock %}

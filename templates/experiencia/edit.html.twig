@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Experiencia{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+        <div class="page-subheading page-subheading-md">
+            <ol class="breadcrumb">
+                <li class="active"><a href="javascript:;">Experiência</a></li>
+            </ol>
+        </div>
+
+        <div class="container-fluid-md">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Formulário</h4>
+                        </div>
+                        <div class="panel-body">
+                            {{ form_start(form) }}
+                        <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{ form_label(form.empresa, "Empresa", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.empresa) }}
+                                {{ form_widget(form.empresa, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{ form_label(form.ultimo_cargo, "Último Cargo", { 'attr': { 'class': 'control-label'}} ) }}
+                                {{ form_errors(form.ultimo_cargo) }}
+                                {{ form_widget(form.ultimo_cargo, { 'attr': { 'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="form-group">
+                                    {{ form_label(form.data_admissao, "Data de Admissao", { 'attr': { 'class': 'control-label'}} ) }}
+                                    {{ form_errors(form.data_admissao) }}
+                                    {{ form_widget(form.data_admissao, { 'attr': { 'class': 'form-control'}} ) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="form-group">
+                                    {{ form_label(form.data_demissao, "Data de Demissao", { 'attr': { 'class': 'control-label'}} ) }}
+                                    {{ form_errors(form.data_demissao) }}
+                                    {{ form_widget(form.data_demissao, { 'attr': { 'class': 'form-control'}} ) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="form-group">
+                                    {{ form_label(form.ultimo_salario, "Último Salário", { 'attr': { 'class': 'control-label'}} ) }}
+                                    {{ form_errors(form.ultimo_salario) }}
+                                    {{ form_widget(form.ultimo_salario, { 'attr': { 'class': 'form-control'}} ) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="form-group">
+                                    {{ form_label(form.atividade_exercida, "Atividade Exercida", { 'attr': { 'class': 'control-label'}} ) }}
+                                    {{ form_errors(form.atividade_exercida) }}
+                                    {{ form_widget(form.atividade_exercida, { 'attr': { 'class': 'form-control'}} ) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="form-group">
+                                    {{ form_label(form.candidato, "Candidato", { 'attr': { 'class': 'control-label'}} ) }}
+                                    {{ form_errors(form.candidato) }}
+                                    {{ form_widget(form.candidato, { 'attr': { 'class': 'form-control'}} ) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">                            
+                                {{ include('experiencia/_form.html.twig', {'button_label': 'Salvar'}) }}
+                                    
+                                <a class="btn btn-inverse" href="{{ path('experiencia_index') }}">Voltar</a>
+                                    
+                                <a class="btn btn-danger" onclick="deletar();">Deletar</a>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+
+                        {{ include('experiencia/_delete_form.html.twig') }}   
+                    </div>                        
+                </div>                    
+            </div>
+        </div>            
+    </div>  
+{% endblock %}
+
+{% block javascripts %} 
+    {{ parent() }}
+    <script>
+        function deletar() {
+            $("#deleteSubmit").click();
+        }
+    </script>
+{% endblock %}

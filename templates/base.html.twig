@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="ie8"> <![endif]-->
+<!--[if IE 9]>         <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+    <!--<![endif]-->
+
+    <!-- Mirrored from optimisticdesigns.herokuapp.com/veneto/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Dec 2019 21:12:05 GMT -->
+    <head>
+    {% block stylesheets %}
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Luiz Admin</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width" />
+        <!--<link rel="shortcut icon" href="/favicon.ico">-->
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="{{ asset('template-back/dist/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('template-back/dist/css/veneto-admin.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('template-back/css/demo.css') }}" />
+        <link rel="stylesheet" href="{{ asset('template-back/dist/assets/font-awesome/css/font-awesome.css') }}" />
+
+        <link rel="stylesheet" href="{{ asset('template-back/dist/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css') }}" />
+        <link rel="stylesheet" href="{{ asset('template-back/dist/css/plugins/rickshaw.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('template-back/dist/css/plugins/morris.min.css') }}" />
+
+        <!--[if lt IE 9]>
+            <script src="{{ asset('template-back/dist/assets/libs/html5shiv/html5shiv.min.js') }}"></script>
+            <script src="{{ asset('template-back/dist/assets/libs/respond/respond.min.js') }}"></script>
+        <![endif]-->
+    {% endblock %}
+    </head>
+    <body class="">
+        <header>
+            <nav class="navbar navbar-default navbar-static-top no-margin" role="navigation">
+                <div class="navbar-brand-group">
+                    <a class="navbar-sidebar-toggle navbar-link" data-sidebar-toggle>
+                        <i class="fa fa-lg fa-fw fa-bars"></i>
+                    </a>
+                    <a class="navbar-brand hidden-xxs" href="index-2.html">
+                        <span class="sc-visible">
+                            L
+                        </span>
+                        <span class="sc-hidden">
+                            <span class="bold">COMPRAS</span>
+                            I&N
+                        </span>
+                    </a>
+                </div>
+                <ul class="nav navbar-nav navbar-nav-expanded pull-right margin-md-right">
+                    
+                    
+                    
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-user" href="javascript:;">
+                            <img class="img-circle" src="demo/images/profile.jpg" />
+                            <span class="hidden-xs">Sair</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu pull-right-xs">
+                            <li class="arrow"></li>
+                            <li><a href="{{ path('logout') }}">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="page-wrapper">
+            <aside class="sidebar sidebar-default">
+                <div class="sidebar-profile">
+                    <img class="img-circle profile-image" src="{{ asset('template-back/img/profile.jpg') }}" />
+
+                    <div class="profile-body">
+                        <h4>Enel Team</h4>
+
+                        <div class="sidebar-user-links">
+                            <a class="btn btn-link btn-xs" href="pages-profile.html" data-placement="bottom" data-toggle="tooltip" data-original-title="Profile"><i class="fa fa-user"></i></a>
+                            <a class="btn btn-link btn-xs" href="javascript:;" data-placement="bottom" data-toggle="tooltip" data-original-title="Messages"><i class="fa fa-envelope"></i></a>
+                            <a class="btn btn-link btn-xs" href="javascript:;" data-placement="bottom" data-toggle="tooltip" data-original-title="Settings"><i class="fa fa-cog"></i></a>
+                            <a class="btn btn-link btn-xs" href="pages-sign-in.html" data-placement="bottom" data-toggle="tooltip" data-original-title="Logout"><i class="fa fa-sign-out"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <nav>
+                    <h5 class="sidebar-header">Nevegação</h5>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="nav-dropdown active open">                            
+                        </li>
+                        <li {% block menuusuarios %}{% endblock %} >
+                            <a href="{{ path('user_index') }}" title="Usuários"> <i class="fa fa-lg fa-fw fa-user"></i> Usuários </a>
+                        </li>
+                         <li>
+                            <a href="{{ path('candidato_index') }}" title="Usuários"> <i class="fa fa-lg fa-fw fa-user"></i> Candidatos </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('empresa_index') }}" title="Empresas"> <i class="fa fa-institution"></i> Empresas </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cargo_index') }}" title="Cargos"> <i class="fa fa-suitcase"></i> Cargos </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('area_index') }}" title="Área"> <i class="fa fa-wrench"></i> Área </a>
+                        </li>                       
+                    </ul>
+                </nav>
+            </aside>
+
+        {% block body%}{% endblock %}
+        </div>
+        
+        {% block javascripts %}
+        <script src="{{ asset('template-back/dist/assets/libs/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/bs3/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/jquery-navgoco/jquery.navgoco.js') }}"></script>
+        <script src="{{ asset('template-back/dist/js/main.js') }}"></script>
+
+        <!--[if lt IE 9]>
+            <script src="{{ asset('template-back/dist/assets/plugins/flot/excanvas.min.js') }}"></script>
+        <![endif]-->
+        <script src="{{ asset('template-back/dist/assets/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
+        <script src="{{ asset('template-back/js/demo.js') }}"></script>
+
+        <script src="{{ asset('template-back/dist/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/jquery-jvectormap/maps/world_mill_en.js') }}"></script>
+
+        <!--[if gte IE 9]>-->
+        <script src="{{ asset('template-back/dist/assets/plugins/rickshaw/js/vendor/d3.v3.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/rickshaw/rickshaw.min.js') }}"></script>
+        <!--<![endif]-->
+
+        <script src="{{ asset('template-back/dist/assets/plugins/flot/jquery.flot.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/flot/jquery.flot.resize.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/raphael/raphael-min.js') }}"></script>
+        <script src="{{ asset('template-back/dist/assets/plugins/morris/morris.min.js') }}"></script>
+        <script src="{{ asset('template-back/js/dashboard.js') }}"></script>
+        {% endblock %}
+    </body>
+
+    <!-- Mirrored from optimisticdesigns.herokuapp.com/veneto/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Dec 2019 21:13:34 GMT -->
+</html>

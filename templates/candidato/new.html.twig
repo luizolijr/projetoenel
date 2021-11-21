@@ -1,0 +1,243 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Candidato{% endblock %}
+
+{% block body %}
+
+    <div class="page-content">
+        <div class="page-subheading page-subheading-md">
+            <ol class="breadcrumb">
+                <li class="active"><a href="javascript:;">Cadastro de Candidatos</a></li>
+            </ol>
+        </div>
+        <div class="container-fluid-md">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Formulário</h4>
+                        </div>
+                        <div class="panel-body">
+                            {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">                          
+                                    <div class="form-group">
+                                        {{ form_label(form.nome, "Nome", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.nome) }}
+                                        {{ form_widget(form.nome, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.carteira_habilitacao, "Carteira de Habilitacao", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.carteira_habilitacao) }}
+                                        {{ form_widget(form.carteira_habilitacao, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                            
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3"> 
+                                    <div class="form-group">
+                                        {{ form_label(form.cpf, "CPF", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.cpf) }}
+                                        {{ form_widget(form.cpf, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3"> 
+                                    <div class="form-group">
+                                        {{ form_label(form.primeiro_emprego, "Primeiro Emprego", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.primeiro_emprego) }}
+                                        {{ form_widget(form.primeiro_emprego, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3"> 
+                                    <div class="form-group">
+                                        {{ form_label(form.data_nascimento, "Data Nascimento", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.data_nascimento) }}
+                                        {{ form_widget(form.data_nascimento, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.possui_decifiencia, "Possui Decifiência?", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.possui_decifiencia) }}
+                                        {{ form_widget(form.possui_decifiencia, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.sexo, "Sexo", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.sexo) }}
+                                        {{ form_widget(form.sexo, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.email, "Email", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.email) }}
+                                        {{ form_widget(form.email, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                                                       
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.estado_civil, "Estado Civil", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.estado_civil) }}
+                                        {{ form_widget(form.estado_civil, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                            
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.numero_filhos, "Número de Filhos", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.numero_filhos) }}
+                                        {{ form_widget(form.numero_filhos, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                           
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.nacionalidade, "Nacionalidade", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.nacionalidade) }}
+                                        {{ form_widget(form.nacionalidade, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.naturalidade, "Naturalidade", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.naturalidade) }}
+                                        {{ form_widget(form.naturalidade, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.foto, "Foto", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.foto) }}
+                                        {{ form_widget(form.foto, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.cep, "CEP", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.cep) }}
+                                        {{ form_widget(form.cep, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.logradouro, "Logradouro", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.logradouro) }}
+                                        {{ form_widget(form.logradouro, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.numero, "Número", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.numero) }}
+                                        {{ form_widget(form.numero, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.complemento, "Complemento", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.complemento) }}
+                                        {{ form_widget(form.complemento, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.bairro, "Bairro", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.bairro) }}
+                                        {{ form_widget(form.bairro, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.cidade, "Cidade", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.cidade) }}
+                                        {{ form_widget(form.cidade, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.estado, "Estado", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.estado) }}
+                                        {{ form_widget(form.estado, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.telefone1, "Telefone 1", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.telefone1) }}
+                                        {{ form_widget(form.telefone1, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.falarcom1, "Falar Com 1", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.falarcom1) }}
+                                        {{ form_widget(form.falarcom1, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.telefone2, "Telefone 2", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.telefone2) }}
+                                        {{ form_widget(form.telefone2, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.falarcom2, "Falar Com 2", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.falarcom2) }}
+                                        {{ form_widget(form.falarcom2, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.senha.first, "Senha", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.senha.first) }}
+                                        {{ form_widget(form.senha.first, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                            
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.senha.second, "Repita a Senha", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.senha.second) }}
+                                        {{ form_widget(form.senha.second, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                            
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-primary" type="submit">Enviar</button>
+                                    <a class="btn btn-inverse" href="{{ path('candidato_index') }}">Voltar</a>
+                                </div>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>                           
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>   
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lingua index{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Língua</a>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="container-fluid-md">
+            <a class="btn btn-primary" href="{{ path('lingua_new') }}">Cadastrar</a>
+            <br></br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Línguas</h4>            
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="9%">Id</th>
+                        <th width="9%">Descricao</th>
+                        <th width="9%">Nivel de Fluência</th>
+                        <th width="9%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for lingua in linguas %}
+                    <tr>
+                        <td>{{ lingua.id }}</td>
+                        <td>{{ lingua.descricao }}</td>
+                        <td>{{ lingua.nivelFluencia }}</td>
+                        <td>
+                            <a class=" btn btn-success" href="{{ path('lingua_show', {'id': lingua.id}) }}">Mostrar</a>
+                            <a class="btn btn-inverse" href="{{ path('lingua_edit', {'id': lingua.id}) }}">Editar</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="26">Sem registros</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+    
+{% endblock %}

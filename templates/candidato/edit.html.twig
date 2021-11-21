@@ -1,0 +1,665 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Candidato{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+        <div class="page-subheading page-subheading-md">
+            <ol class="breadcrumb">
+                <li class="active"><a href="javascript:;">Editar Candidatos</a></li>
+            </ol>
+        </div>
+
+        <div class="container-fluid-md">
+            <div class="row">                
+                <div class="col-md-12">                            
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                
+                    <a class="btn btn-inverse" href="{{ path('candidato_index') }}">Voltar</a>
+                
+                    <a class="btn btn-danger" onclick="deletar();">Deletar</a>
+                    
+                    <br></br>
+                </div>                
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Formulário</h4>                    
+                            
+                        </div>
+                        <div class="panel-body">
+                            {{ form_start(form) }}                           
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">                          
+                                    <div class="form-group">
+                                        {{ form_label(form.nome, "Nome", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.nome) }}
+                                        {{ form_widget(form.nome, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.carteira_habilitacao, "Carteira de Habilitacao", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.carteira_habilitacao) }}
+                                        {{ form_widget(form.carteira_habilitacao, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                            
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3"> 
+                                    <div class="form-group">
+                                        {{ form_label(form.cpf, "CPF", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.cpf) }}
+                                        {{ form_widget(form.cpf, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3"> 
+                                    <div class="form-group">
+                                        {{ form_label(form.primeiro_emprego, "Primeiro Emprego", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.primeiro_emprego) }}
+                                        {{ form_widget(form.primeiro_emprego, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3"> 
+                                    <div class="form-group">
+                                        {{ form_label(form.data_nascimento, "Data Nascimento", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.data_nascimento) }}
+                                        {{ form_widget(form.data_nascimento, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.possui_decifiencia, "Possui Decifiência?", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.possui_decifiencia) }}
+                                        {{ form_widget(form.possui_decifiencia, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.sexo, "Sexo", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.sexo) }}
+                                        {{ form_widget(form.sexo, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.email, "Email", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.email) }}
+                                        {{ form_widget(form.email, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                                                       
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.estado_civil, "Estado Civil", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.estado_civil) }}
+                                        {{ form_widget(form.estado_civil, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                            
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.numero_filhos, "Número de Filhos", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.numero_filhos) }}
+                                        {{ form_widget(form.numero_filhos, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                           
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.nacionalidade, "Nacionalidade", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.nacionalidade) }}
+                                        {{ form_widget(form.nacionalidade, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.naturalidade, "Naturalidade", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.naturalidade) }}
+                                        {{ form_widget(form.naturalidade, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.foto, "Foto", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.foto) }}
+                                        {{ form_widget(form.foto, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.cep, "CEP", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.cep) }}
+                                        {{ form_widget(form.cep, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.logradouro, "Logradouro", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.logradouro) }}
+                                        {{ form_widget(form.logradouro, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.numero, "Número", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.numero) }}
+                                        {{ form_widget(form.numero, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.complemento, "Complemento", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.complemento) }}
+                                        {{ form_widget(form.complemento, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.bairro, "Bairro", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.bairro) }}
+                                        {{ form_widget(form.bairro, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.cidade, "Cidade", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.cidade) }}
+                                        {{ form_widget(form.cidade, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.estado, "Estado", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.estado) }}
+                                        {{ form_widget(form.estado, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.telefone1, "Telefone 1", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.telefone1) }}
+                                        {{ form_widget(form.telefone1, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.falarcom1, "Falar Com 1", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.falarcom1) }}
+                                        {{ form_widget(form.falarcom1, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.telefone2, "Telefone 2", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.telefone2) }}
+                                        {{ form_widget(form.telefone2, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.falarcom2, "Falar Com 2", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.falarcom2) }}
+                                        {{ form_widget(form.falarcom2, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.senha.first, "Senha", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.senha.first) }}
+                                        {{ form_widget(form.senha.first, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                            
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.senha.second, "Repita a Senha", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.senha.second) }}
+                                        {{ form_widget(form.senha.second, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                            
+                                </div>
+                            </div>
+                            {# <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        {{ form_label(form.usuario, "Usuário", { 'attr': { 'class': 'control-label'}} ) }}
+                                        {{ form_errors(form.usuario) }}
+                                        {{ form_widget(form.usuario, { 'attr': { 'class': 'form-control'}} ) }}
+                                    </div>                            
+                                </div>
+                            </div>                             #}
+                            {{ form_end(form) }}
+
+                            {{ include('candidato/_delete_form.html.twig') }}   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid-md">            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Língua</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form action="{{ path('candidato_lingua') }}" method="post">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label class="control-label" for="lingua_descricao">Descrição</label>
+                                            <input class="form-control" id="lingua_descricao" name="lingua_descricao" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label" for="lingua_nivel">Nível</label>
+                                            <select class="form-control" id="lingua_nivel" name="lingua_nivel">
+                                                <option value="Básico">Básico</option>
+                                                <option value="Intermediário">Intermediário</option>
+                                                <option value="Avançado">Avançado</option>
+                                                <option value="Fluente">Fluente</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="hidden" class="form-control" id="lingua_candidato" name="lingua_candidato" value="{{ candidato.id }}" />
+                                        <button class="btn btn-success" style=" margin-top: 23px;" type="submit">Adicionar</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th width="9%">Descricao</th>
+                                                    <th width="9%">Nivel de Fluência</th>
+                                                    <th width="9%">Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for lingua in candidato.linguas %}
+                                                    <td>{{ lingua.descricao }}</td>
+                                                    <td>{{ lingua.nivelFluencia }}</td>
+                                                    <td>
+                                                        <a class="btn btn-inverse" href="{{ path('candidato_mostrar_lingua', {'lingua': lingua.id, 'candidato' : candidato.id}) }}">Mostrar</a>
+                                                        <a class="btn btn-inverse" href="{{ path('candidato_editar_lingua', {'lingua': lingua.id, 'candidato' : candidato.id}) }}">Editar</a>
+                                                        <a class="btn btn-danger" href="{{ path('candidato_delete_lingua', {'lingua': lingua.id, 'candidato' : candidato.id}) }}" onclick="return confirm('Tem certeza que deseja deletar este item?');">Deletar</a>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="3">Sem registros</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>                                    
+                            </div>                                    
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+
+        <div class="container-fluid-md">            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Experiência</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form action="{{ path('candidato_experiencia') }}" method="post">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label" for="experiencia_empresa">Empresa</label>
+                                            <input class="form-control" id="experiencia_empresa" name="experiencia_empresa" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="experiencia_cargo">Último Cargo</label>
+                                            <input class="form-control" id="experiencia_cargo" name="experiencia_cargo" />                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="experiencia_salario">Último Salário</label>
+                                            <input class="form-control" id="experiencia_salario" name="experiencia_salario" />                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="experiencia_admissao">Data de Admissão</label>
+                                            <input type="date" class="form-control" id="experiencia_admissao" name="experiencia_admissao" />                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="experiencia_demissao">Data de Demissão</label>
+                                            <input type="date" class="form-control" id="experiencia_demissao" name="experiencia_demissao" />                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label" for="experiencia_atividade">Atividade Exercida</label>
+                                            <textarea class="form-control" id="experiencia_atividade" name="experiencia_atividade" rows="5"></textarea>                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="hidden" class="form-control" id="experiencia_candidato" name="experiencia_candidato" value="{{ candidato.id }}" />
+                                        <button class="btn btn-success" style=" margin-top: 23px;" type="submit">Adicionar</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th width="9%">Admissão</th>
+                                                    <th width="9%">Empresa</th>
+                                                    <th width="9%">Ultimo Cargo</th>
+                                                    <th width="9%">Atividade Exercida</th>
+                                                    <th width="9%">Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for experiencia in candidato.experiencias %}
+                                                <tr>
+                                                    <td>{{ experiencia.dataAdmissao ? experiencia.dataAdmissao|date('d/m/Y') : '' }}</td>
+                                                    <td>{{ experiencia.empresa }}</td>
+                                                    <td>{{ experiencia.ultimoCargo }}</td>
+                                                    <td>{{ experiencia.atividadeExercida }}</td>
+                                                    
+                                                    <td>
+                                                        <a class="btn btn-inverse" href="{{ path('candidato_mostrar_experiencia', {'experiencia': experiencia.id, 'candidato' : candidato.id}) }}">Mostrar</a>
+                                                        <a class="btn btn-inverse" href="{{ path('candidato_editar_experiencia', {'experiencia': experiencia.id, 'candidato' : candidato.id}) }}">Editar</a>
+                                                        <a class="btn btn-danger" href="{{ path('candidato_delete_experiencia', {'experiencia': experiencia.id, 'candidato' : candidato.id}) }}" onclick="return confirm('Tem certeza que deseja deletar este item?');">Deletar</a>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="5">Sem registros</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>                                    
+                            </div>                                    
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+
+        <div class="container-fluid-md">            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Formação</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form action="{{ path('candidato_formacao') }}" method="post">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="formacao_grau">Grau de Formacao</label>
+                                            <input class="form-control" id="formacao_grau" name="formacao_grau" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="formacao_curso">Curso</label>
+                                            <input class="form-control" id="formacao_curso" name="formacao_curso" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="formacao_instituicao">Instituição</label>
+                                            <input class="form-control" id="formacao_instituicao" name="formacao_instituicao" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="formacao_situacao">Situação</label>
+                                            <input class="form-control" id="formacao_situacao" name="formacao_situacao" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label" for="formacao_grau">Grau de Formacao</label>
+                                            <input class="form-control" id="formacao_grau" name="formacao_grau" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label class="control-label" for="formacao_conclusao">Data de Conclusão</label>
+                                            <input type="date" class="form-control" id="formacao_conclusao" name="formacao_conclusao" />
+                                        </div>
+                                    </div>                                    
+                                    <div class="col-md-1">
+                                        <input type="hidden" class="form-control" id="formacao_candidato" name="formacao_candidato" value="{{ candidato.id }}" />
+                                        <button class="btn btn-success" style=" margin-top: 23px;" type="submit">Adicionar</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th width="9%">Curso</th>
+                                                    <th width="9%">Situacao</th>
+                                                    <th width="9%">Data de Conclusao</th>
+                                                    <th width="9%">Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for formacao in candidato.formacaos %}
+                                                <tr>
+                                                    <td>{{ formacao.curso }}</td>
+                                                    <td>{{ formacao.situacao }}</td>
+                                                    <td>{{ formacao.dataConclusao ? formacao.dataConclusao|date('d/m/Y') : '' }}</td>                                                    
+                                                    
+                                                    <td>
+                                                        <a class="btn btn-inverse" href="{{ path('candidato_mostrar_formacao', {'formacao': formacao.id, 'candidato' : candidato.id}) }}">Mostrar</a>
+                                                        <a class="btn btn-inverse" href="{{ path('candidato_editar_formacao', {'formacao': formacao.id, 'candidato' : candidato.id}) }}">Editar</a>
+                                                        <a class="btn btn-danger" href="{{ path('candidato_delete_formacao', {'formacao': formacao.id, 'candidato' : candidato.id}) }}" onclick="return confirm('Tem certeza que deseja deletar este item?');">Deletar</a>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="4">Sem registros</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>                                    
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+        <div class="container-fluid-md">            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Software</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form action="{{ path('candidato_software') }}" method="post">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label class="control-label" for="software_descricao">Descrição</label>
+                                            <input class="form-control" id="software_descricao" name="software_descricao" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label" for="software_nivel">Nível</label>
+                                            <select class="form-control" id="software_nivel" name="software_nivel">
+                                                <option value="Básico">Básico</option>
+                                                <option value="Intermediário">Intermediário</option>
+                                                <option value="Avançado">Avançado</option>
+                                                <option value="Fluente">Fluente</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="hidden" class="form-control" id="software_candidato" name="software_candidato" value="{{ candidato.id }}" />
+                                        <button class="btn btn-success" style=" margin-top: 23px;" type="submit">Adicionar</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th width="9%">Descricao</th>
+                                                    <th width="9%">Nivel</th>
+                                                    <th width="9%">Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for software in candidato.softwares %}
+                                                <tr>
+                                                    <td>{{ software.descricao }}</td>
+                                                    <td>{{ software.nivel }}</td>
+                                                    <td>
+                                                        <a class="btn btn-inverse" href="{{ path('candidato_mostrar_software', {'software': software.id, 'candidato' : candidato.id}) }}">Mostrar</a>
+                                                        <a class="btn btn-inverse" href="{{ path('candidato_editar_software', {'software': software.id, 'candidato' : candidato.id}) }}">Editar</a>
+                                                        <a class="btn btn-danger" href="{{ path('candidato_delete_software', {'software': software.id, 'candidato' : candidato.id}) }}" onclick="return confirm('Tem certeza que deseja deletar este item?');">Deletar</a>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="3">Sem registros</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>                                    
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+        <div class="container-fluid-md">            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Cargo Desejado</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form action="{{ path('candidato_desejado') }}" method="post">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label class="control-label" for="desejado_cargo">Cargo</label>
+                                            <input class="form-control" id="desejado_cargo" name="desejado_cargo" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label" for="desejado_pretensao">Pretensão Salarial</label>
+                                            <input class="form-control" id="desejado_pretensao" name="desejado_pretensao" />                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="hidden" class="form-control" id="desejado_candidato" name="desejado_candidato" value="{{ candidato.id }}" />
+                                        <button class="btn btn-success" style=" margin-top: 23px;" type="submit">Adicionar</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th width="9%">Cargo</th>
+                                                    <th width="9%">Pretensão Salarial</th>
+                                                    <th width="9%">Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for cargoDesejado in candidato.cargosDesejados %}
+                                                <tr>
+                                                    <td>{{ cargoDesejado.cargo }}</td>
+                                                    <td>{{ cargoDesejado.pretencaoSalarial }}</td>
+                                                    <td>
+                                                        <a class="btn btn-inverse" href="{{ path('candidato_mostrar_desejado', {'desejado': cargoDesejado.id, 'candidato' : candidato.id}) }}">Mostrar</a>
+                                                        <a class="btn btn-inverse" href="{{ path('candidato_editar_desejado', {'desejado': cargoDesejado.id, 'candidato' : candidato.id}) }}">Editar</a>
+                                                        <a class="btn btn-danger" href="{{ path('candidato_delete_desejado', {'desejado': cargoDesejado.id, 'candidato' : candidato.id}) }}" onclick="return confirm('Tem certeza que deseja deletar este item?');">Deletar</a>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="3">Sem registros</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>                                    
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %} 
+    {{ parent() }}
+    <script>
+        function deletar() {
+            $("#deleteSubmit").click();
+        }
+    </script>
+{% endblock %}

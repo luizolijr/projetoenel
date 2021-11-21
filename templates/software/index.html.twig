@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Software index{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Áreas</a>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="container-fluid-md">
+            <a class="btn btn-primary" href="{{ path('software_new') }}">Cadastrar</a>
+            <br></br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Áreas</h4>            
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="9%">Id</th>
+                        <th width="9%">Descricao</th>
+                        <th width="9%">Nivel</th>
+                        <th width="9%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for software in software %}
+                    <tr>
+                        <td>{{ software.id }}</td>
+                        <td>{{ software.descricao }}</td>
+                        <td>{{ software.nivel }}</td>
+                        <td>
+                            <a class=" btn btn-success" href="{{ path('software_show', {'id': software.id}) }}">Mostrar</a>
+                            <a class="btn btn-inverse" href="{{ path('software_edit', {'id': software.id}) }}">Editar</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Sem registros</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CargoDesejado{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="javascript:;">Área</a>
+                    </li>
+                </ol>
+            </div>
+
+        <div class="container-fluid-md">
+            <a class="btn btn-inverse" href="{{ path('cargo_desejado_index') }}">Voltar</a>            
+
+            <a class=" btn btn-primary" href="{{ path('cargo_desejado_edit', {'id': cargo_desejado.id}) }}">Editar</a>            
+            <br></br>
+            {{ include('cargo_desejado/_delete_form.html.twig') }}
+
+            
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cargo_desejado.id }}</td>
+            </tr>
+            <tr>
+                <th>Cargo</th>
+                <td>{{ cargo_desejado.cargo }}</td>
+            </tr>
+            <tr>
+                <th>Pretencao_salarial</th>
+                <td>{{ cargo_desejado.pretencaoSalarial }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    
+
+{% endblock %}
